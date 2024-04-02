@@ -20,7 +20,6 @@
 
 .page {
   min-inline-size: 360px;
-  max-inline-size: 1440px;
   margin: 0 auto;
   background-color: var(--bg-color, #F3EFEC);
   color: var(--text-color, #312A4E);
@@ -48,10 +47,6 @@ button:disabled {
   pointer-events: none;
 }
 
-.content-section {
-  padding: 0 5vw;
-}
-
 .header {
   padding-top: 10%;
 }
@@ -72,7 +67,7 @@ button:disabled {
 .header__menu {
   display: flex;
   justify-content: space-between;
-  padding: 20px 72px;
+  padding-block: 20px;
   border-top: 1px solid currentColor;
   border-bottom: 1px solid currentColor;
 }
@@ -96,7 +91,7 @@ button:disabled {
 
 .header__theme-button:hover {
   cursor: pointer;
-  text-decoration: underline rgb(from var(--text-color) r g b / 50%);
+  text-decoration: underline rgb(from var(--text-color, #312A4E) r g b / 50%);
 }
 
 .header__theme-button:focus-visible {
@@ -124,6 +119,10 @@ button:disabled {
   content: '';
   background-color: transparent;
   background-image: url('../images/pattern.svg');
+}
+
+.content-section {
+  padding-inline: 5vi;
 }
 
 .content__title {
@@ -156,6 +155,7 @@ button:disabled {
 
 .colored-text {
   position: relative;
+  display: inline-block;
 }
 
 .colored-text::after {
@@ -204,7 +204,7 @@ button:disabled {
 }
 
 .content__paragraph-link:hover {
-  text-decoration-color: rgb(from var(--text-color) r g b / 50%);
+  text-decoration-color: rgb(from var(--text-color, #312A4E) r g b / 50%);
 }
 
 .content__paragraph-link:focus-visible {
@@ -263,7 +263,7 @@ button:disabled {
   position: absolute;
   width: 15px;
   height: 15px;
-  inset: 3px auto auto -25px;
+  inset: calc(50% - 7.5px) auto auto -25px;
   background: url('../images/marker-light.svg') no-repeat center;
   background-size: contain;
 }
