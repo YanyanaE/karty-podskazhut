@@ -1,3 +1,17 @@
+:root {
+  --bg-color: #F3EFEC;
+  --text-color: #312A4E;
+  --accent-color: #FFAB6B;
+  --main-font: Raleway;
+  --accent-font: 'STIX Two Text';
+}
+
+.theme_dark {
+  --bg-color: #171717;
+  --text-color: #B3B3B3;
+  --accent-color: transparent;
+}
+
 *,
 *::before,
 *::after {
@@ -6,7 +20,10 @@
 
 .page {
   min-inline-size: 360px;
-  margin: 0;
+  margin: 0 auto;
+  background-color: var(--bg-color, #F3EFEC);
+  color: var(--text-color, #312A4E);
+  font-family: var(--main-font, sans-serif);
 }
 
 p,
@@ -19,4 +36,252 @@ ol,
 li,
 figure {
   margin: 0;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+.header {
+  padding-top: 10%;
+}
+
+.heading {
+  font-family: var(--accent-font, serif);
+  line-height: 90%;
+  text-align: center;
+}
+
+.header__title {
+  font-size: clamp(3.75rem, 2.5rem + 5.5556vw, 7.5rem);
+  margin-bottom: 40px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 2px #000;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 20px;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.header__theme-toggler {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  list-style-type: none
+}
+
+.header__theme-button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: currentColor;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.header__theme-button:hover {
+  cursor: pointer;
+  text-decoration: underline rgb(from var(--text-color, #312A4E) r g b / 50%);
+}
+
+.header__theme-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+.header__theme-button_is-active {
+  position: relative;
+  font-weight: 700;
+}
+
+.header__theme-button_is-active::after {
+  content: '';
+  position: absolute;
+  width: calc(100% + 6px);
+  height: 0.3em;
+  background-color: var(--accent-color, #FFAB6B);
+  left: -3px;
+  top: 11px;
+  z-index: -1;
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  content: '';
+  background-color: transparent;
+  background-image: url('../images/pattern.svg');
+}
+
+.content-section {
+  padding-inline: 5vi;
+}
+
+.content__title {
+  font-size: 30px;
+  margin: 7% 0 2.5%;
+}
+
+.content__title:first-child {
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content__text-block {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.content__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: 7%;
+  border: 1px solid currentColor;
+}
+
+.content__card-title {
+  font-size: 60px;
+}
+
+.colored-text {
+  position: relative;
+  display: inline-block;
+}
+
+.colored-text::after {
+  content: '';
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 0.25em;
+  background-color: var(--accent-color, #FFAB6B);
+  top: 34px;
+  left: -4px;
+  z-index: -1;
+}
+
+.theme_dark .colored-text::after {
+  content:'';
+  background-color: transparent;
+  background-image: url('../images/pattern.svg');
+}
+
+.content__card-subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.content__text-block_type_first-lettered .content__paragraph:nth-child(1)::first-letter {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 30px;
+  padding: 0 4px;
+  margin-right: 4px;
+  margin-left: -3px;
+  background-color: var(--accent-color, #FFAB6B);
+}
+
+.theme_dark .content__text-block_type_first-lettered .content__paragraph:nth-child(1)::first-letter {
+  border: 1px solid var(--text-color, #B3B3B3);
+}
+
+.content__text-block .content__paragraph:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.content__paragraph-link {
+  color: currentColor;
+}
+
+.content__paragraph-link:hover {
+  text-decoration-color: rgb(from var(--text-color, #312A4E) r g b / 50%);
+}
+
+.content__paragraph-link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+.content__figure {
+  width: calc(100% + 10vw);
+  margin: 7% 0 7% -5vw;
+}
+
+.content__picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__picture-image {
+  width: 100%;
+}
+
+.content__picture-caption {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 18px;
+  border-bottom: 1px solid currentColor;
+}
+
+.content__blockquote {
+  display: block;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+  font-style: italic;
+  color: inherit;
+  line-height: 200%;
+}
+
+.content__list {
+  list-style-type: none;
+  padding-inline-start: 40px;
+}
+
+.content__list-item {
+  position: relative;
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.content__list-item::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  inset: calc(50% - 7.5px) auto auto -25px;
+  background: url('../images/marker-light.svg') no-repeat center;
+  background-size: contain;
+}
+
+.theme_dark .content__list-item::before {
+  content: '';
+  background: url('../images/marker-dark.svg') no-repeat center;
+}
+
+.footer {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 10%;
+  border-top: 1px solid currentColor;
+}
+
+.footer__copyright {
+  padding: 2.5%;
+  font-size: 18px;
 }
